@@ -97,25 +97,73 @@
 
   /* ---------- File upload preview ---------- */
   function setupFileUpload() {
+    const formatSize = bytes => {
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+      return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
+    };
+
+    const renderPreview = (dropzone, file) => {
+      const img = dropzone.querySelector('.upload-thumb');
+      const nameEl = dropzone.querySelector('.upload-name');
+      const sizeEl = dropzone.querySelector('.upload-size');
+      if (nameEl) nameEl.textContent = file.name;
+      if (sizeEl) sizeEl.textContent = formatSize(file.size);
+      if (img && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = e => { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+      }
+      dropzone.classList.add('has-file');
+    };
+
+    const clearPreview = (dropzone, input) => {
+      const img = dropzone.querySelector('.upload-thumb');
+      input.value = '';
+      if (img) img.removeAttribute('src');
+      dropzone.classList.remove('has-file');
+    };
+
     document.querySelectorAll('input[type="file"][data-file-meta]').forEach(input => {
-      const metaKey = input.getAttribute('data-file-meta');
-      const meta = document.querySelector(`[data-meta="${metaKey}"]`);
       const dropzone = input.closest('.form-upload');
-      const defaultText = meta ? meta.textContent : '';
+      if (!dropzone) return;
+      const removeBtn = dropzone.querySelector('.upload-remove');
 
       input.addEventListener('change', () => {
-        if (!input.files || !input.files[0]) {
-          if (meta) meta.textContent = defaultText;
-          dropzone?.classList.remove('has-file');
-          return;
-        }
-        const f = input.files[0];
-        const kb = (f.size / 1024).toFixed(0);
-        const sizeText = f.size < 1024 * 1024
-          ? `${kb} KB`
-          : `${(f.size / 1024 / 1024).toFixed(2)} MB`;
-        if (meta) meta.textContent = `${f.name} · ${sizeText}`;
-        dropzone?.classList.add('has-file');
+        if (input.files && input.files[0]) renderPreview(dropzone, input.files[0]);
+      });
+
+      if (removeBtn) {
+        removeBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          e.preventDefault();
+          clearPreview(dropzone, input);
+        });
+      }
+
+      ['dragenter', 'dragover'].forEach(ev => {
+        dropzone.addEventListener(ev, e => {
+          e.preventDefault();
+          if (!dropzone.classList.contains('has-file')) dropzone.classList.add('is-dragover');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(ev => {
+        dropzone.addEventListener(ev, e => {
+          e.preventDefault();
+          dropzone.classList.remove('is-dragover');
+        });
+      });
+
+      dropzone.addEventListener('drop', e => {
+        const file = e.dataTransfer.files && e.dataTransfer.files[0];
+        if (!file || !file.type.startsWith('image/')) return;
+        try {
+          const dt = new DataTransfer();
+          dt.items.add(file);
+          input.files = dt.files;
+        } catch (_) { /* older browsers */ }
+        renderPreview(dropzone, file);
       });
     });
   }
