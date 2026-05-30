@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <title>Goal Shot Ball Association of Bihar — Official</title>
-  <meta name="description" content="Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.">
+  <meta name="description"
+    content="Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.">
   <meta name="keywords" content="Goal Shot Ball, Bihar sports, GSB association, sports federation, India sports">
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +18,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/fontawesome.min.css">
@@ -130,13 +133,55 @@
 
       <div class="gsb-hero-visual">
         <div class="gsb-hero-card" data-tilt>
-          <img src="assets/img/hero/hero-2-1.jpg" alt="Goal Shot Ball player in action">
-          <div class="tag">
-            <div class="tag-text">
-              Live Practice Session
-              <span>Patna Training Ground</span>
+          <div class="gsb-slider" data-slider aria-roledescription="carousel" aria-label="Goal Shot Ball highlights">
+            <div class="gsb-slider-track" data-slider-track>
+
+              <div class="gsb-slide" role="group" aria-roledescription="slide" aria-label="1 of 3">
+                <img src="assets/img/hero/hero-2-1.jpg" alt="Goal Shot Ball player in action" loading="eager"
+                  width="460" height="575">
+                <div class="tag">
+                  <div class="tag-text">
+                    Live Practice Session
+                    <span>Patna Training Ground</span>
+                  </div>
+                  <div class="tag-icon"><i class="fas fa-bolt"></i></div>
+                </div>
+              </div>
+
+              <div class="gsb-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+                <img src="assets/img/hero/hero-2-2.jpg" alt="Players competing in a Goal Shot Ball match" loading="lazy"
+                  width="460" height="575">
+                <div class="tag">
+                  <div class="tag-text">
+                    Match Day Action
+                    <span>State Championship</span>
+                  </div>
+                  <div class="tag-icon"><i class="fas fa-futbol"></i></div>
+                </div>
+              </div>
+
+              <div class="gsb-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+                <img src="assets/img/hero/banner.png" alt="Goal Shot Ball team celebrating a win" loading="lazy"
+                  width="460" height="575">
+                <div class="tag">
+                  <div class="tag-text">
+                    Champions Spirit
+                    <span>National Finals 2024</span>
+                  </div>
+                  <div class="tag-icon"><i class="fas fa-trophy"></i></div>
+                </div>
+              </div>
+
             </div>
-            <div class="tag-icon"><i class="fas fa-bolt"></i></div>
+
+            <button class="gsb-slider-arrow prev" type="button" data-slider-prev aria-label="Previous slide">
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button class="gsb-slider-arrow next" type="button" data-slider-next aria-label="Next slide">
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+
+            <div class="gsb-slider-dots" data-slider-dots role="tablist" aria-label="Choose slide"></div>
           </div>
         </div>
 
@@ -160,28 +205,420 @@
   <!-- ==================== MARQUEE ==================== -->
   <section class="gsb-marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Goal Shot Ball</span>
-      <span class="sep"></span>
-      <span class="outline">Bihar Federation</span>
-      <span class="sep"></span>
-      <span>Speed</span>
-      <span class="sep"></span>
-      <span class="outline">Skill</span>
-      <span class="sep"></span>
-      <span>Spirit</span>
-      <span class="sep"></span>
-      <span>Goal Shot Ball</span>
-      <span class="sep"></span>
-      <span class="outline">Bihar Federation</span>
-      <span class="sep"></span>
-      <span>Speed</span>
-      <span class="sep"></span>
-      <span class="outline">Skill</span>
-      <span class="sep"></span>
-      <span>Spirit</span>
-      <span class="sep"></span>
+      <img class="marquee-logo" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <span>Goal Shot Ball Association</span>
+      <img class="marquee-logo" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <span>Goal Shot Ball Association</span>
+      <img class="marquee-logo" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <span>Goal Shot Ball Association</span>
+      <img class="marquee-logo" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <span>Goal Shot Ball Association</span>
+      <img class="marquee-logo" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <span>Goal Shot Ball Association</span>
+      <img class="marquee-logo" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <span>Goal Shot Ball Association</span>
+      <img class="marquee-logo" src="assets/img/logo.png" alt="" aria-hidden="true">
     </div>
   </section>
+
+  <!-- ==================== MEMBERS ==================== -->
+  <section class="gsb-section" id="members">
+    <div class="gsb-container">
+      <div class="section-intro">
+        <span class="section-label center">Members</span>
+        <h2 class="section-title">Meet Our <span class="accent">Members</span></h2>
+        <p>The faces behind the federation — coaches, athletes, and the team that drives Bihar's Goal Shot Ball forward.
+        </p>
+      </div>
+
+      <div class="members-slider">
+        <button class="members-arrow prev" type="button" data-members-prev aria-label="Previous members">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+
+        <div class="members-track" data-stagger data-members-track>
+          <article class="member-card">
+            <div class="member-img">
+              <img src="assets/img/team/team-member-1-1.jpg" alt="Andrew John">
+              <div class="member-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3>Andrew John</h3>
+              <span class="role">President, GSB Bihar</span>
+            </div>
+          </article>
+
+          <article class="member-card">
+            <div class="member-img">
+              <img src="assets/img/team/team-member-1-2.jpg" alt="Rivanur R. Rafi">
+              <div class="member-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3>Rivanur R. Rafi</h3>
+              <span class="role">Lead Coach</span>
+            </div>
+          </article>
+
+          <article class="member-card">
+            <div class="member-img">
+              <img src="assets/img/team/team-member-1-3.jpg" alt="Emma Hayes">
+              <div class="member-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3>Emma Hayes</h3>
+              <span class="role">Technical Trainer</span>
+            </div>
+          </article>
+
+          <article class="member-card">
+            <div class="member-img">
+              <img src="assets/img/team/team-member-1-4.jpg" alt="Sophia Davis">
+              <div class="member-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3>Sophia Davis</h3>
+              <span class="role">Performance Analyst</span>
+            </div>
+          </article>
+        </div>
+
+        <button class="members-arrow next" type="button" data-members-next aria-label="Next members">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== COUNTERS ==================== -->
+  <section class="gsb-counters">
+    <div class="gsb-container">
+      <div class="counters-grid" data-stagger>
+        <div class="counter-item">
+          <div class="num"><span data-count="230">0</span>+</div>
+          <div class="label">Total Enrolled Players</div>
+        </div>
+        <div class="counter-item">
+          <div class="num"><span data-count="98">0</span><small>%</small></div>
+          <div class="label">Happy Athletes</div>
+        </div>
+        <div class="counter-item">
+          <div class="num"><span data-count="79">0</span>+</div>
+          <div class="label">Training Sessions</div>
+        </div>
+        <div class="counter-item">
+          <div class="num"><span data-count="42">0</span></div>
+          <div class="label">District Units</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ==================== REGISTRATION FORM ==================== -->
+  <section class="gsb-section gsb-form-section" id="register">
+    <div class="gsb-container">
+      <div class="section-intro reveal-up">
+        <span class="section-label center">BHA Registration</span>
+        <h2 class="section-title">Create your <span class="accent">account</span></h2>
+        <p>Fill in your details below. All required fields are marked with an asterisk.</p>
+      </div>
+
+      <!-- Trigger to expand form -->
+      <div class="form-trigger-wrap reveal-up" id="formTriggerWrap">
+        <div class="form-trigger-card">
+          <div class="form-trigger-info">
+            <span class="form-trigger-badge">
+              <i class="fas fa-user-plus"></i>
+              Player Registration
+            </span>
+            <h3>Ready to register?</h3>
+            <p>Takes about 3 minutes. Have your Aadhaar, photo, and signature ready.</p>
+          </div>
+          <button type="button" class="btn-form primary form-trigger-btn" id="formTriggerBtn"
+            aria-controls="formCollapse" aria-expanded="false">
+            Register Now
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Collapsible form -->
+      <div class="form-collapse" id="formCollapse">
+        <div class="form-collapse-inner">
+          <form class="gsb-form-wrap reveal-up" action="mail.php" method="post" enctype="multipart/form-data"
+            novalidate>
+
+            <!-- 01 Registration Type -->
+            <section class="form-block">
+              <div class="form-block-head">
+                <span class="form-block-num">01</span>
+                <h3 class="form-block-title">Registration type</h3>
+              </div>
+              <div class="form-row one">
+                <div class="form-field">
+                  <label>Type of registration <span class="req">*</span></label>
+                  <select name="registration_type" required>
+                    <option value="">Select registration type&hellip;</option>
+                    <option>Men</option>
+                    <option>Women</option>
+                    <option>Boy</option>
+                    <option>Girl</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <!-- 02 Personal Details -->
+            <section class="form-block">
+              <div class="form-block-head">
+                <span class="form-block-num">02</span>
+                <h3 class="form-block-title">Personal details</h3>
+                <span class="form-block-hint">As per official documents</span>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label>First name <span class="req">*</span></label>
+                  <input type="text" name="first_name" placeholder="Enter first name" minlength="3" required>
+                </div>
+                <div class="form-field">
+                  <label>Middle name</label>
+                  <input type="text" name="middle_name" placeholder="Optional">
+                </div>
+                <div class="form-field">
+                  <label>Last name <span class="req">*</span></label>
+                  <input type="text" name="last_name" placeholder="Enter last name" minlength="3" required>
+                </div>
+                <div class="form-field">
+                  <label>Date of birth <span class="req">*</span></label>
+                  <input type="date" name="dob" required>
+                </div>
+                <div class="form-field">
+                  <label>Father's name <span class="req">*</span></label>
+                  <input type="text" name="father_name" placeholder="Enter father's name" minlength="3" required>
+                </div>
+                <div class="form-field">
+                  <label>Mother's name <span class="req">*</span></label>
+                  <input type="text" name="mother_name" placeholder="Enter mother's name" minlength="3" required>
+                </div>
+              </div>
+            </section>
+
+            <!-- 03 Contact Details -->
+            <section class="form-block">
+              <div class="form-block-head">
+                <span class="form-block-num">03</span>
+                <h3 class="form-block-title">Contact details</h3>
+              </div>
+              <div class="form-row">
+                <div class="form-field field-full">
+                  <label>Address <span class="req">*</span> <span class="hint">(alphanumeric)</span></label>
+                  <input type="text" name="address" placeholder="House no, street, locality&hellip;" required>
+                </div>
+                <div class="form-field">
+                  <label>Village / City <span class="req">*</span></label>
+                  <input type="text" name="village_city" placeholder="Letters only" pattern="[A-Za-z\s]+" required>
+                </div>
+                <div class="form-field">
+                  <label>State / Province</label>
+                  <input type="text" name="state" value="Bihar" readonly>
+                </div>
+                <div class="form-field">
+                  <label>District <span class="req">*</span></label>
+                  <select name="district" required>
+                    <option value="">Select district&hellip;</option>
+                    <option>Patna</option>
+                    <option>Gaya</option>
+                    <option>Bhagalpur</option>
+                    <option>Muzaffarpur</option>
+                    <option>Darbhanga</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label>Pincode <span class="req">*</span> <span class="hint">(6 digits)</span></label>
+                  <input type="text" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6"
+                    placeholder="800001" required>
+                </div>
+                <div class="form-field">
+                  <label>Country</label>
+                  <input type="text" name="country" value="India" readonly>
+                </div>
+                <div class="form-field">
+                  <label>Mobile number <span class="req">*</span></label>
+                  <input type="tel" name="mobile" inputmode="numeric" pattern="[0-9]{10}" maxlength="10"
+                    placeholder="10-digit number" required>
+                </div>
+              </div>
+            </section>
+
+            <!-- 04 Identity & Access -->
+            <section class="form-block">
+              <div class="form-block-head">
+                <span class="form-block-num">04</span>
+                <h3 class="form-block-title">Identity &amp; access</h3>
+              </div>
+              <div class="form-row two">
+                <div class="form-field">
+                  <label>Aadhaar card number <span class="req">*</span> <span class="hint">(12 digits)</span></label>
+                  <input type="text" name="aadhaar" inputmode="numeric" pattern="[0-9]{12}" maxlength="12"
+                    placeholder="XXXX XXXX XXXX" required>
+                </div>
+                <div class="form-field">
+                  <label>Password <span class="req">*</span></label>
+                  <div class="pwd-wrap">
+                    <input type="password" id="reg-pwd" name="password" placeholder="Create a strong password"
+                      minlength="8" required>
+                    <button type="button" class="pwd-toggle" data-pwd-target="reg-pwd"
+                      aria-label="Toggle password visibility">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="pwd-eye">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="form-field field-full">
+                  <label>Email address <span class="req">*</span></label>
+                  <input type="email" name="email" placeholder="you@example.com" required>
+                </div>
+              </div>
+            </section>
+
+            <!-- 05 Document Uploads -->
+            <section class="form-block">
+              <div class="form-block-head">
+                <span class="form-block-num">05</span>
+                <h3 class="form-block-title">Document uploads</h3>
+                <span class="form-block-hint">JPG or PNG &middot; max 2MB</span>
+              </div>
+              <div class="form-row two">
+                <div class="form-field">
+                  <label>Candidate photograph <span class="req">*</span> <span class="hint">(3cm &times;
+                      4cm)</span></label>
+                  <div class="form-upload">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <circle cx="9" cy="9" r="2" />
+                      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                    </svg>
+                    <div class="upload-text"><strong>Click to upload</strong> or drag &amp; drop</div>
+                    <div class="upload-meta" data-meta="photo-meta">PNG, JPG up to 2MB</div>
+                    <div class="upload-preview">
+                      <img class="upload-thumb" alt="Preview" />
+                      <div class="upload-info">
+                        <span class="upload-name"></span>
+                        <span class="upload-size"></span>
+                        <span class="upload-status">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          Uploaded
+                        </span>
+                      </div>
+                      <button type="button" class="upload-remove" aria-label="Remove file">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round">
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </button>
+                    </div>
+                    <input type="file" name="photo" accept="image/*" data-file-meta="photo-meta" required>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label>Candidate signature <span class="req">*</span> <span class="hint">(2cm &times;
+                      1cm)</span></label>
+                  <div class="form-upload">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 19.5 4 19.5" />
+                      <path d="M4 16c4-3 6-9 10-9 2 0 3 1 3 3s-2 4-5 4-5-2-5-2" />
+                    </svg>
+                    <div class="upload-text"><strong>Click to upload</strong> or drag &amp; drop</div>
+                    <div class="upload-meta" data-meta="sig-meta">PNG, JPG up to 2MB</div>
+                    <div class="upload-preview">
+                      <img class="upload-thumb" alt="Preview" />
+                      <div class="upload-info">
+                        <span class="upload-name"></span>
+                        <span class="upload-size"></span>
+                        <span class="upload-status">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          Uploaded
+                        </span>
+                      </div>
+                      <button type="button" class="upload-remove" aria-label="Remove file">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round">
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </button>
+                    </div>
+                    <input type="file" name="signature" accept="image/*" data-file-meta="sig-meta" required>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Agreement -->
+            <div class="form-agree">
+              <input type="checkbox" id="terms" name="terms" required>
+              <label for="terms">
+                I agree to all the <a href="#">terms and conditions</a> of BHA, and confirm that the information
+                provided above is accurate to the best of my knowledge.
+              </label>
+            </div>
+
+            <!-- Actions -->
+            <div class="form-actions">
+              <button type="reset" class="btn-form ghost">Reset form</button>
+              <button type="submit" class="btn-form primary">
+                Save &amp; continue
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <p class="form-foot">
+            Need help? Visit our <em>support centre</em> or call 1800-XXX-XXXX
+          </p>
+        </div>
+      </div>
+      <!-- /form-collapse -->
+    </div>
+  </section>
+
 
   <!-- ==================== ABOUT ==================== -->
   <section class="gsb-section" id="about">
@@ -240,29 +677,6 @@
     </div>
   </section>
 
-  <!-- ==================== COUNTERS ==================== -->
-  <section class="gsb-counters">
-    <div class="gsb-container">
-      <div class="counters-grid" data-stagger>
-        <div class="counter-item">
-          <div class="num"><span data-count="230">0</span>+</div>
-          <div class="label">Total Enrolled Players</div>
-        </div>
-        <div class="counter-item">
-          <div class="num"><span data-count="98">0</span><small>%</small></div>
-          <div class="label">Happy Athletes</div>
-        </div>
-        <div class="counter-item">
-          <div class="num"><span data-count="79">0</span>+</div>
-          <div class="label">Training Sessions</div>
-        </div>
-        <div class="counter-item">
-          <div class="num"><span data-count="42">0</span></div>
-          <div class="label">District Units</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ==================== SERVICES / PROGRAMS ==================== -->
   <section class="gsb-section" id="services">
@@ -317,321 +731,7 @@
     </div>
   </section>
 
-  <!-- ==================== REGISTRATION FORM ==================== -->
-  <section class="gsb-section gsb-form-section" id="register">
-    <div class="gsb-container">
-      <div class="section-intro reveal-up">
-        <span class="section-label center">BHA Registration</span>
-        <h2 class="section-title">Create your <span class="accent">account</span></h2>
-        <p>Fill in your details below. All required fields are marked with an asterisk.</p>
-      </div>
 
-      <!-- Trigger to expand form -->
-      <div class="form-trigger-wrap reveal-up" id="formTriggerWrap">
-        <div class="form-trigger-card">
-          <div class="form-trigger-info">
-            <span class="form-trigger-badge">
-              <i class="fas fa-user-plus"></i>
-              Player Registration
-            </span>
-            <h3>Ready to register?</h3>
-            <p>Takes about 3 minutes. Have your Aadhaar, photo, and signature ready.</p>
-          </div>
-          <button type="button" class="btn-form primary form-trigger-btn" id="formTriggerBtn" aria-controls="formCollapse" aria-expanded="false">
-            Register Now
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Collapsible form -->
-      <div class="form-collapse" id="formCollapse">
-       <div class="form-collapse-inner">
-      <form class="gsb-form-wrap reveal-up" action="mail.php" method="post" enctype="multipart/form-data" novalidate>
-
-        <!-- 01 Registration Type -->
-        <section class="form-block">
-          <div class="form-block-head">
-            <span class="form-block-num">01</span>
-            <h3 class="form-block-title">Registration type</h3>
-          </div>
-          <div class="form-row one">
-            <div class="form-field">
-              <label>Type of registration <span class="req">*</span></label>
-              <select name="registration_type" required>
-                <option value="">Select registration type&hellip;</option>
-                <option>Men</option>
-                <option>Women</option>
-                <option>Boy</option>
-                <option>Girl</option>
-              </select>
-            </div>
-          </div>
-        </section>
-
-        <!-- 02 Personal Details -->
-        <section class="form-block">
-          <div class="form-block-head">
-            <span class="form-block-num">02</span>
-            <h3 class="form-block-title">Personal details</h3>
-            <span class="form-block-hint">As per official documents</span>
-          </div>
-          <div class="form-row">
-            <div class="form-field">
-              <label>First name <span class="req">*</span></label>
-              <input type="text" name="first_name" placeholder="Enter first name" minlength="3" required>
-            </div>
-            <div class="form-field">
-              <label>Middle name</label>
-              <input type="text" name="middle_name" placeholder="Optional">
-            </div>
-            <div class="form-field">
-              <label>Last name <span class="req">*</span></label>
-              <input type="text" name="last_name" placeholder="Enter last name" minlength="3" required>
-            </div>
-            <div class="form-field">
-              <label>Date of birth <span class="req">*</span></label>
-              <input type="date" name="dob" required>
-            </div>
-            <div class="form-field">
-              <label>Father's name <span class="req">*</span></label>
-              <input type="text" name="father_name" placeholder="Enter father's name" minlength="3" required>
-            </div>
-            <div class="form-field">
-              <label>Mother's name <span class="req">*</span></label>
-              <input type="text" name="mother_name" placeholder="Enter mother's name" minlength="3" required>
-            </div>
-          </div>
-        </section>
-
-        <!-- 03 Contact Details -->
-        <section class="form-block">
-          <div class="form-block-head">
-            <span class="form-block-num">03</span>
-            <h3 class="form-block-title">Contact details</h3>
-          </div>
-          <div class="form-row">
-            <div class="form-field field-full">
-              <label>Address <span class="req">*</span> <span class="hint">(alphanumeric)</span></label>
-              <input type="text" name="address" placeholder="House no, street, locality&hellip;" required>
-            </div>
-            <div class="form-field">
-              <label>Village / City <span class="req">*</span></label>
-              <input type="text" name="village_city" placeholder="Letters only" pattern="[A-Za-z\s]+" required>
-            </div>
-            <div class="form-field">
-              <label>State / Province</label>
-              <input type="text" name="state" value="Bihar" readonly>
-            </div>
-            <div class="form-field">
-              <label>District <span class="req">*</span></label>
-              <select name="district" required>
-                <option value="">Select district&hellip;</option>
-                <option>Patna</option>
-                <option>Gaya</option>
-                <option>Bhagalpur</option>
-                <option>Muzaffarpur</option>
-                <option>Darbhanga</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label>Pincode <span class="req">*</span> <span class="hint">(6 digits)</span></label>
-              <input type="text" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="800001" required>
-            </div>
-            <div class="form-field">
-              <label>Country</label>
-              <input type="text" name="country" value="India" readonly>
-            </div>
-            <div class="form-field">
-              <label>Mobile number <span class="req">*</span></label>
-              <input type="tel" name="mobile" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" required>
-            </div>
-          </div>
-        </section>
-
-        <!-- 04 Identity & Access -->
-        <section class="form-block">
-          <div class="form-block-head">
-            <span class="form-block-num">04</span>
-            <h3 class="form-block-title">Identity &amp; access</h3>
-          </div>
-          <div class="form-row two">
-            <div class="form-field">
-              <label>Aadhaar card number <span class="req">*</span> <span class="hint">(12 digits)</span></label>
-              <input type="text" name="aadhaar" inputmode="numeric" pattern="[0-9]{12}" maxlength="12" placeholder="XXXX XXXX XXXX" required>
-            </div>
-            <div class="form-field">
-              <label>Password <span class="req">*</span></label>
-              <div class="pwd-wrap">
-                <input type="password" id="reg-pwd" name="password" placeholder="Create a strong password" minlength="8" required>
-                <button type="button" class="pwd-toggle" data-pwd-target="reg-pwd" aria-label="Toggle password visibility">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pwd-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                </button>
-              </div>
-            </div>
-            <div class="form-field field-full">
-              <label>Email address <span class="req">*</span></label>
-              <input type="email" name="email" placeholder="you@example.com" required>
-            </div>
-          </div>
-        </section>
-
-        <!-- 05 Document Uploads -->
-        <section class="form-block">
-          <div class="form-block-head">
-            <span class="form-block-num">05</span>
-            <h3 class="form-block-title">Document uploads</h3>
-            <span class="form-block-hint">JPG or PNG &middot; max 2MB</span>
-          </div>
-          <div class="form-row two">
-            <div class="form-field">
-              <label>Candidate photograph <span class="req">*</span> <span class="hint">(3cm &times; 4cm)</span></label>
-              <div class="form-upload">
-                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                <div class="upload-text"><strong>Click to upload</strong> or drag &amp; drop</div>
-                <div class="upload-meta" data-meta="photo-meta">PNG, JPG up to 2MB</div>
-                <div class="upload-preview">
-                  <img class="upload-thumb" alt="Preview" />
-                  <div class="upload-info">
-                    <span class="upload-name"></span>
-                    <span class="upload-size"></span>
-                    <span class="upload-status">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      Uploaded
-                    </span>
-                  </div>
-                  <button type="button" class="upload-remove" aria-label="Remove file">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  </button>
-                </div>
-                <input type="file" name="photo" accept="image/*" data-file-meta="photo-meta" required>
-              </div>
-            </div>
-            <div class="form-field">
-              <label>Candidate signature <span class="req">*</span> <span class="hint">(2cm &times; 1cm)</span></label>
-              <div class="form-upload">
-                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 19.5 4 19.5"/><path d="M4 16c4-3 6-9 10-9 2 0 3 1 3 3s-2 4-5 4-5-2-5-2"/></svg>
-                <div class="upload-text"><strong>Click to upload</strong> or drag &amp; drop</div>
-                <div class="upload-meta" data-meta="sig-meta">PNG, JPG up to 2MB</div>
-                <div class="upload-preview">
-                  <img class="upload-thumb" alt="Preview" />
-                  <div class="upload-info">
-                    <span class="upload-name"></span>
-                    <span class="upload-size"></span>
-                    <span class="upload-status">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      Uploaded
-                    </span>
-                  </div>
-                  <button type="button" class="upload-remove" aria-label="Remove file">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  </button>
-                </div>
-                <input type="file" name="signature" accept="image/*" data-file-meta="sig-meta" required>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Agreement -->
-        <div class="form-agree">
-          <input type="checkbox" id="terms" name="terms" required>
-          <label for="terms">
-            I agree to all the <a href="#">terms and conditions</a> of BHA, and confirm that the information provided above is accurate to the best of my knowledge.
-          </label>
-        </div>
-
-        <!-- Actions -->
-        <div class="form-actions">
-          <button type="reset" class="btn-form ghost">Reset form</button>
-          <button type="submit" class="btn-form primary">
-            Save &amp; continue
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-      </form>
-
-      <p class="form-foot">
-        Need help? Visit our <em>support centre</em> or call 1800-XXX-XXXX
-      </p>
-       </div>
-      </div>
-      <!-- /form-collapse -->
-    </div>
-  </section>
-
-  <!-- ==================== MEMBERS ==================== -->
-  <section class="gsb-section" id="members">
-    <div class="gsb-container">
-      <div class="section-intro">
-        <span class="section-label center">Members</span>
-        <h2 class="section-title">Meet Our <span class="accent">Members</span></h2>
-        <p>The faces behind the federation — coaches, athletes, and the team that drives Bihar's Goal Shot Ball forward.</p>
-      </div>
-
-      <div class="members-track" data-stagger>
-        <article class="member-card">
-          <div class="member-img">
-            <img src="assets/img/team/team-member-1-1.jpg" alt="Andrew John">
-            <div class="member-socials">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h3>Andrew John</h3>
-            <span class="role">President, GSB Bihar</span>
-          </div>
-        </article>
-
-        <article class="member-card">
-          <div class="member-img">
-            <img src="assets/img/team/team-member-1-2.jpg" alt="Rivanur R. Rafi">
-            <div class="member-socials">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h3>Rivanur R. Rafi</h3>
-            <span class="role">Lead Coach</span>
-          </div>
-        </article>
-
-        <article class="member-card">
-          <div class="member-img">
-            <img src="assets/img/team/team-member-1-3.jpg" alt="Emma Hayes">
-            <div class="member-socials">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h3>Emma Hayes</h3>
-            <span class="role">Technical Trainer</span>
-          </div>
-        </article>
-
-        <article class="member-card">
-          <div class="member-img">
-            <img src="assets/img/team/team-member-1-4.jpg" alt="Sophia Davis">
-            <div class="member-socials">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h3>Sophia Davis</h3>
-            <span class="role">Performance Analyst</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <!-- ==================== GALLERY ==================== -->
   <section class="gsb-section" id="gallery">
@@ -693,7 +793,8 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
           </div>
-          <p>GSB Bihar gave me the platform to compete nationally. The coaching is world-class and the camaraderie is unmatched.</p>
+          <p>GSB Bihar gave me the platform to compete nationally. The coaching is world-class and the camaraderie is
+            unmatched.</p>
           <div class="testi-author">
             <img src="assets/img/testimonials/testi-1-1.jpg" alt="">
             <div>
@@ -712,7 +813,8 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
           </div>
-          <p>From beginner clinic to district champion in two years. The structured pathway here is unlike anything else.</p>
+          <p>From beginner clinic to district champion in two years. The structured pathway here is unlike anything
+            else.</p>
           <div class="testi-author">
             <img src="assets/img/testimonials/testi-1-1.jpg" alt="">
             <div>
@@ -823,7 +925,8 @@
       <div class="footer-grid">
         <div class="footer-col">
           <h4 style="font-family: var(--font-display); font-size: 28px; color: var(--bg);">GSB Bihar</h4>
-          <p>Goal Shot Ball Association of Bihar (Reg. No 200/2008). Affiliated with National &amp; International Federations.</p>
+          <p>Goal Shot Ball Association of Bihar (Reg. No 200/2008). Affiliated with National &amp; International
+            Federations.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
@@ -889,4 +992,5 @@
   <!-- ==================== SCRIPTS ==================== -->
   <script src="assets/js/modern.js" defer></script>
 </body>
+
 </html>
