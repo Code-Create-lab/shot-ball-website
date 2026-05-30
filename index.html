@@ -38,8 +38,8 @@
       <a href="index.html" class="gsb-logo">
         <img src="assets/img/logo.png" alt="Goal Shot Ball Association">
         <div class="gsb-logo-text">
-          GSB Bihar
-          <span>Reg.No 200/2008</span>
+          Goal Shot Ball Association of Bihar
+          <span>ESTD. 2026</span>
         </div>
       </a>
 
@@ -85,10 +85,10 @@
 
     <div class="gsb-hero-inner">
       <div class="hero-content">
-        <span class="gsb-eyebrow">
+        <!-- <span class="gsb-eyebrow">
           <span class="gsb-eyebrow-dot"><i class="fas fa-bolt"></i></span>
           Official Bihar State Federation
-        </span>
+        </span> -->
 
         <h1>
           <span class="word"><span>Where</span></span>
@@ -239,61 +239,51 @@
         <div class="members-track" data-stagger data-members-track>
           <article class="member-card">
             <div class="member-img">
-              <img src="assets/img/team/team-member-1-1.jpg" alt="Andrew John">
-              <div class="member-socials">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              </div>
+              <img src="assets/img/members/Sumit%20Kumar_Chairman%20GSBAB.jpeg" alt="Sumit Kumar, Chairman">
             </div>
             <div class="member-info">
-              <h3>Andrew John</h3>
-              <span class="role">President, GSB Bihar</span>
+              <h3>Sumit Kumar</h3>
+              <span class="role">Chairman, GSBAB</span>
             </div>
           </article>
 
           <article class="member-card">
             <div class="member-img">
-              <img src="assets/img/team/team-member-1-2.jpg" alt="Rivanur R. Rafi">
-              <div class="member-socials">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              </div>
+              <img src="assets/img/members/Ram%20Pravesh%20Kumar%20_Secretary%20General%20GSBAB.jpeg" alt="Ram Pravesh Kumar, Secretary General">
             </div>
             <div class="member-info">
-              <h3>Rivanur R. Rafi</h3>
-              <span class="role">Lead Coach</span>
+              <h3>Ram Pravesh Kumar</h3>
+              <span class="role">Secretary General, GSBAB</span>
             </div>
           </article>
 
           <article class="member-card">
             <div class="member-img">
-              <img src="assets/img/team/team-member-1-3.jpg" alt="Emma Hayes">
-              <div class="member-socials">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              </div>
+              <img src="assets/img/members/AMIT%20KUMAR%20VERMA_Senior%20Vice%20President%20GSBAB.jpeg" alt="Amit Kumar Verma, Senior Vice President">
             </div>
             <div class="member-info">
-              <h3>Emma Hayes</h3>
-              <span class="role">Technical Trainer</span>
+              <h3>Amit Kumar Verma</h3>
+              <span class="role">Senior Vice President, GSBAB</span>
             </div>
           </article>
 
           <article class="member-card">
             <div class="member-img">
-              <img src="assets/img/team/team-member-1-4.jpg" alt="Sophia Davis">
-              <div class="member-socials">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              </div>
+              <img src="assets/img/members/Durgesh%20Nandan.jpeg" alt="Durgesh Nandan, Vice President">
             </div>
             <div class="member-info">
-              <h3>Sophia Davis</h3>
-              <span class="role">Performance Analyst</span>
+              <h3>Durgesh Nandan</h3>
+              <span class="role">Assistant Commissioner of state taxes<br>President GSBAB</span></span>
+            </div>
+          </article>
+
+          <article class="member-card">
+            <div class="member-img">
+              <img src="assets/img/members/Gaurav%20Kuma_Treasure%20GSBAB.jpeg" alt="Gaurav Kumar, Treasurer">
+            </div>
+            <div class="member-info">
+              <h3>Gaurav Kumar</h3>
+              <span class="role">Treasurer, GSBAB</span>
             </div>
           </article>
         </div>
@@ -330,7 +320,7 @@
     </div>
   </section>
 
-  
+
   <!-- ==================== REGISTRATION FORM ==================== -->
   <section class="gsb-section gsb-form-section" id="register">
     <div class="gsb-container">
@@ -375,7 +365,7 @@
                 <span class="form-block-num">01</span>
                 <h3 class="form-block-title">Registration type</h3>
               </div>
-              <div class="form-row one">
+              <div class="form-row two">
                 <div class="form-field">
                   <label>Type of registration <span class="req">*</span></label>
                   <select name="registration_type" required>
@@ -384,6 +374,15 @@
                     <option>Women</option>
                     <option>Boy</option>
                     <option>Girl</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label>Event Type <span class="req">*</span></label>
+                  <select name="event_type" required>
+                    <option value="">Select event type&hellip;</option>
+                    <option>Senior</option>
+                    <option>Junior</option>
+                    <option>Sub-Junior</option>
                   </select>
                 </div>
               </div>
@@ -483,7 +482,7 @@
                   <input type="text" name="aadhaar" inputmode="numeric" pattern="[0-9]{12}" maxlength="12"
                     placeholder="XXXX XXXX XXXX" required>
                 </div>
-                <div class="form-field">
+                <!-- <div class="form-field">
                   <label>Password <span class="req">*</span></label>
                   <div class="pwd-wrap">
                     <input type="password" id="reg-pwd" name="password" placeholder="Create a strong password"
@@ -497,9 +496,9 @@
                       </svg>
                     </button>
                   </div>
-                </div>
-                <div class="form-field field-full">
-                  <label>Email address <span class="req">*</span></label>
+                </div> -->
+                <div class="form-field">
+                  <label>Email address </label>
                   <input type="email" name="email" placeholder="you@example.com" required>
                 </div>
               </div>
@@ -924,8 +923,9 @@
     <div class="gsb-container">
       <div class="footer-grid">
         <div class="footer-col">
-          <h4 style="font-family: var(--font-display); font-size: 28px; color: var(--bg);">GSB Bihar</h4>
-          <p>Goal Shot Ball Association of Bihar (Reg. No 200/2008). Affiliated with National &amp; International
+          <img class="footer-logo" src="assets/img/logo.png" alt="Goal Shot Ball Association of Bihar">
+          <h4 style="font-family: var(--font-display); font-size: 28px; color: var(--bg);">Goal Shot Ball Association of Bihar</h4>
+          <p>Goal Shot Ball Association of Bihar (ESTD. 2026). Affiliated with National &amp; International
             Federations.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
