@@ -3615,6 +3615,21 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 18px rgba(245, 158, 11, 0.4);
 }
 
+.footer-affiliation {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--primary-300, #fde68a);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(253, 230, 138, 0.22);
+  border-radius: var(--radius-pill);
+}
+
 .footer-socials {
   display: flex;
   gap: 10px;
