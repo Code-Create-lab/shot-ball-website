@@ -23,6 +23,7 @@
     setupHeroIntro();
     setupMagneticButtons();
     setupHeroSlider();
+    setupGalleryTabs();
     setupMembersSlider();
     setupTiltCards();
     setupAnchorScroll();
@@ -543,6 +544,48 @@
 
     goTo(0);
     start();
+  }
+
+  /* ---------- Gallery / Player category tabs ---------- */
+  function setupGalleryTabs() {
+    document.querySelectorAll('.gallery-tabs').forEach(tablist => {
+      const scope = tablist.parentElement;
+      if (!scope) return;
+      const tabs = Array.from(tablist.querySelectorAll('[data-gallery-tab]'));
+      const panels = Array.from(scope.querySelectorAll('[data-gallery-panel]'));
+
+      function activate(key) {
+        tablist.setAttribute('data-active', key);
+        tabs.forEach(t => {
+          const on = t.dataset.galleryTab === key;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(p => {
+          const on = p.dataset.galleryPanel === key;
+          p.classList.toggle('is-active', on);
+          p.hidden = !on;
+          // Ensure staggered grids in a newly shown panel are revealed
+          if (on) p.querySelectorAll('[data-stagger]').forEach(g => g.classList.add('revealed'));
+        });
+      }
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => activate(tab.dataset.galleryTab));
+        tab.addEventListener('keydown', (e) => {
+          if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+          e.preventDefault();
+          const dir = e.key === 'ArrowRight' ? 1 : -1;
+          const nextTab = tabs[(i + dir + tabs.length) % tabs.length];
+          activate(nextTab.dataset.galleryTab);
+          nextTab.focus();
+        });
+      });
+
+      // Sync initial state from markup
+      const initial = tabs.find(t => t.classList.contains('is-active')) || tabs[0];
+      if (initial) activate(initial.dataset.galleryTab);
+    });
   }
 
 })();
