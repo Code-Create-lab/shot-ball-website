@@ -178,12 +178,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gsb-logo img {
-  height: 64px;
+  height: 100px;
   width: auto;
 }
 
 .gsb-logo-text {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.12;
   max-width: 210px;
   text-transform: uppercase;
@@ -3175,8 +3175,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 575px) {
-  .gsb-logo img { height: 52px; }
-  .gsb-logo-text { font-size: 13px; max-width: 168px; }
+  .gsb-logo img { height: 72px; }
+  .gsb-logo-text { font-size: 12px; max-width: 168px; }
   .gsb-logo-text span { font-size: 10px; }
 }
 
