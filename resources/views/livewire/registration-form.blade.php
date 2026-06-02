@@ -1,6 +1,8 @@
-<form class="gsb-form-wrap" wire:submit="submit" novalidate>
+<form class="gsb-form-wrap" wire:submit="submit" novalidate
+  x-data
+  x-on:registration-saved.window="$nextTick(() => document.getElementById('registration-success')?.scrollIntoView({ behavior: 'smooth', block: 'center' }))">
   @if ($submitted)
-    <div class="form-saved" role="status" aria-live="polite"
+    <div id="registration-success" class="form-saved" role="status" aria-live="polite"
       style="text-align:center;padding:48px 24px;">
       <div
         style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:#ecfdf5;color:#059669;font-size:32px;margin-bottom:18px;">
