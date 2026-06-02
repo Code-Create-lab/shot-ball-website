@@ -13,7 +13,7 @@ class SystemMonitorController extends Controller
 {
     protected function gate(Request $request): void
     {
-        $expected = (string) config('monitor.password');
+        $expected = $this->resolvePassword();
         if ($expected === '' || strlen($expected) < 16) {
             abort(503, 'System monitor disabled: ADMIN_PANEL_PASSWORD must be set to a value of at least 16 characters in .env');
         }
@@ -21,6 +21,68 @@ class SystemMonitorController extends Controller
         if ($given === '' || !hash_equals($expected, $given)) {
             abort(403, 'Access Denied');
         }
+    }
+
+    /**
+     * Resolve the gate password from the most-to-least reliable source.
+     *
+     * Under `php artisan config:cache`, Laravel does not load the .env file at
+     * runtime, so config(), env(), $_ENV and getenv() can all be blank if the
+     * value was not present when the cache was built. As a last resort we read
+     * the raw .env file directly, which always reflects the live value.
+     */
+    protected function resolvePassword(): string
+    {
+        $candidates = [
+            (string) config('monitor.password'),
+            (string) ($_ENV['ADMIN_PANEL_PASSWORD'] ?? ''),
+            (string) ($_SERVER['ADMIN_PANEL_PASSWORD'] ?? ''),
+            (string) (getenv('ADMIN_PANEL_PASSWORD') ?: ''),
+        ];
+
+        foreach ($candidates as $value) {
+            if ($value !== '') {
+                return $value;
+            }
+        }
+
+        return $this->readEnvFile('ADMIN_PANEL_PASSWORD');
+    }
+
+    /**
+     * Read a single key straight from the project .env file.
+     */
+    protected function readEnvFile(string $key): string
+    {
+        $file = base_path('.env');
+        if (! is_readable($file)) {
+            return '';
+        }
+
+        foreach (file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [] as $line) {
+            $line = trim($line);
+            if ($line === '' || $line[0] === '#' || ! str_contains($line, '=')) {
+                continue;
+            }
+
+            [$name, $value] = explode('=', $line, 2);
+            if (trim($name) !== $key) {
+                continue;
+            }
+
+            $value = trim($value);
+
+            // Strip optional surrounding quotes.
+            if (strlen($value) >= 2
+                && ($value[0] === '"' || $value[0] === "'")
+                && $value[strlen($value) - 1] === $value[0]) {
+                $value = substr($value, 1, -1);
+            }
+
+            return $value;
+        }
+
+        return '';
     }
 
     public function dashboard(Request $request)
