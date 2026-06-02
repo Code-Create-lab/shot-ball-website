@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <title>@yield('title', 'Goal Shot Ball Association of Bihar — Official')</title>
-    <meta name="description" content="@yield('meta_description', 'Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.')">
+    <meta name="description" content="@yield('meta_description', 'Goal Shot Ball Association of Bihar. Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.')">
     <meta name="keywords" content="Goal Shot Ball, Bihar sports, GSB association, sports federation, India sports">
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:site_name" content="Goal Shot Ball Association of Bihar">
     <meta property="og:title" content="@yield('og_title', View::yieldContent('title', 'Goal Shot Ball Association of Bihar — Official'))">
-    <meta property="og:description" content="@yield('og_description', View::yieldContent('meta_description', 'Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.'))">
+    <meta property="og:description" content="@yield('og_description', View::yieldContent('meta_description', 'Goal Shot Ball Association of Bihar. Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.'))">
     <meta property="og:url" content="@yield('canonical', url()->current())">
     <meta property="og:image" content="@yield('og_image', asset('assets/img/og-cover.jpg'))">
     <meta property="og:image:width" content="1200">
@@ -30,7 +30,7 @@
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('og_title', View::yieldContent('title', 'Goal Shot Ball Association of Bihar — Official'))">
-    <meta name="twitter:description" content="@yield('og_description', View::yieldContent('meta_description', 'Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.'))">
+    <meta name="twitter:description" content="@yield('og_description', View::yieldContent('meta_description', 'Goal Shot Ball Association of Bihar. Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.'))">
     <meta name="twitter:image" content="@yield('og_image', asset('assets/img/og-cover.jpg'))">
 
     <link rel="icon" href="{{ asset('assets/img/logo.png') }}" type="image/png">
@@ -45,7 +45,7 @@
     "alternateName": "GSBAB",
     "url": "{{ url('/') }}",
     "logo": "{{ asset('assets/img/logo.png') }}",
-    "description": "Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.",
+    "description": "Goal Shot Ball Association of Bihar. Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.",
     "sport": "Goal Shot Ball",
     "address": {
       "@@type": "PostalAddress",
