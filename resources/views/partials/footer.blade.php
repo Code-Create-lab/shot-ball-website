@@ -53,11 +53,19 @@
             </li>
             <li>
               <i class="fas fa-phone" aria-hidden="true"></i>
-              <a href="tel:+917979906275">7979906275</a>
+              <span>
+                <a href="tel:+918083319186">8083319186</a>,
+                <a href="tel:+917479469850">7479469850</a>,
+                <a href="tel:+917979906275">7979906275</a>
+              </span>
             </li>
             <li>
               <i class="fas fa-envelope" aria-hidden="true"></i>
-              <a href="mailto:veeru271291@gmail.com">veeru271291@gmail.com</a>
+              <a href="mailto:bihargoalshotball@gmail.com">bihargoalshotball@gmail.com</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:Verma.amit8083@gmail.com">Verma.amit8083@gmail.com</a>
             </li>
           </ul>
         </div>
