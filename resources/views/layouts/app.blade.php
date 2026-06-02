@@ -12,9 +12,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F59E0B">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="author" content="Goal Shot Ball Association of Bihar">
+
+  {{-- Canonical --}}
+  <link rel="canonical" href="@yield('canonical', url()->current())">
+
+  {{-- Open Graph (Facebook, WhatsApp, LinkedIn) --}}
+  <meta property="og:type" content="@yield('og_type', 'website')">
+  <meta property="og:site_name" content="Goal Shot Ball Association of Bihar">
+  <meta property="og:title" content="@yield('og_title', View::yieldContent('title', 'Goal Shot Ball Association of Bihar — Official'))">
+  <meta property="og:description"
+    content="@yield('og_description', View::yieldContent('meta_description', 'Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.'))">
+  <meta property="og:url" content="@yield('canonical', url()->current())">
+  <meta property="og:image" content="@yield('og_image', asset('assets/img/og-cover.jpg'))">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+
+  {{-- Twitter Card --}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="@yield('og_title', View::yieldContent('title', 'Goal Shot Ball Association of Bihar — Official'))">
+  <meta name="twitter:description"
+    content="@yield('og_description', View::yieldContent('meta_description', 'Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.'))">
+  <meta name="twitter:image" content="@yield('og_image', asset('assets/img/og-cover.jpg'))">
 
   <link rel="icon" href="{{ asset('assets/img/logo.png') }}" type="image/png">
   <link rel="apple-touch-icon" href="{{ asset('assets/img/logo.png') }}">
+
+  {{-- Structured data: helps Google show a rich org panel --}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "Goal Shot Ball Association of Bihar",
+    "alternateName": "GSBAB",
+    "url": "{{ url('/') }}",
+    "logo": "{{ asset('assets/img/logo.png') }}",
+    "description": "Goal Shot Ball Association of Bihar (Reg.No 200/2008). Affiliated with Goal Shot Ball Association of India and recognized by Asian and International Federations.",
+    "sport": "Goal Shot Ball",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kamruddinpur, Ward No-5",
+      "addressLocality": "Begusarai",
+      "addressRegion": "Bihar",
+      "addressCountry": "IN"
+    },
+    "email": "bihargoalshotball@gmail.com",
+    "telephone": "+91-8083319186",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-8083319186",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["en", "hi"]
+    }]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
