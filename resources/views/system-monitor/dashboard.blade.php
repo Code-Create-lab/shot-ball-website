@@ -438,6 +438,18 @@
         </div>
 
         <div class="action-card">
+            <h3>📦 Composer</h3>
+            <div class="hint">Install / update PHP dependencies · live terminal output</div>
+            <div class="btn-row">
+                <a href="?password={{ $password }}&action=composer&composer=install" class="btn success">⬇ Install</a>
+                <a href="?password={{ $password }}&action=composer&composer=install-prod" class="btn success">⬇ Install (prod)</a>
+                <a href="?password={{ $password }}&action=composer&composer=update" class="btn warn" onclick="return confirm('composer update can change dependency versions. Continue?');">⟳ Update</a>
+                <a href="?password={{ $password }}&action=composer&composer=dump-autoload" class="btn">Dump Autoload</a>
+                <a href="?password={{ $password }}&action=composer&composer=diagnose" class="btn">Diagnose</a>
+            </div>
+        </div>
+
+        <div class="action-card">
             <h3>ℹ️ System Info</h3>
             <div class="hint">Inspect runtime state</div>
             <div class="btn-row">

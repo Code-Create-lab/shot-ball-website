@@ -74,6 +74,7 @@ Route::get('/run-command', function (\Illuminate\Http\Request $request) {
         'metrics'        => $controller->metrics($request),
         'logs'           => $controller->logs($request),
         'run'            => $controller->runCommand($request),
+        'composer'       => $controller->composer($request),
         'clear_sessions' => $controller->clearSessions($request),
         'debug'          => $controller->debug($request),
         default          => $controller->dashboard($request),

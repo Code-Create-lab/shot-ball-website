@@ -309,6 +309,130 @@ class SystemMonitorController extends Controller
         ]);
     }
 
+    /**
+     * Composer console. Without ?stream=1 it renders a live terminal page;
+     * with ?stream=1 it executes the command and streams stdout/stderr to the
+     * browser in real time (chunked text/plain) so output appears like a shell.
+     *
+     * Only a fixed allowlist of commands runs — no arbitrary package args — so
+     * the endpoint cannot be used to `composer require` malicious packages.
+     */
+    public function composer(Request $request)
+    {
+        $this->gate($request);
+
+        $key   = (string) $request->query('composer', 'install');
+        $recipes = $this->composerRecipes();
+
+        if (! isset($recipes[$key])) {
+            abort(400, 'Unknown composer command.');
+        }
+        $args = $recipes[$key];
+
+        // First hit: render the terminal shell that opens the stream itself.
+        if (! $request->boolean('stream')) {
+            return view('system-monitor.terminal', [
+                'password' => $request->query('password'),
+                'action'   => 'composer',
+                'key'      => $key,
+                'title'    => 'composer ' . implode(' ', $args),
+            ]);
+        }
+
+        if (! function_exists('proc_open')) {
+            return response("proc_open() is disabled on this host — composer cannot run.\n", 200)
+                ->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+
+        return $this->streamProcess($this->composerCommand($args), base_path());
+    }
+
+    /**
+     * Fixed, safe composer command recipes (no user-supplied package names).
+     */
+    protected function composerRecipes(): array
+    {
+        return [
+            'install'       => ['install', '--no-interaction', '--prefer-dist', '--no-progress'],
+            'install-prod'  => ['install', '--no-interaction', '--prefer-dist', '--no-progress', '--no-dev', '--optimize-autoloader'],
+            'update'        => ['update', '--no-interaction', '--prefer-dist', '--no-progress', '--with-all-dependencies'],
+            'dump-autoload' => ['dump-autoload', '--optimize'],
+            'diagnose'      => ['diagnose'],
+            'version'       => ['--version'],
+        ];
+    }
+
+    /**
+     * Resolve the composer executable to an argv array.
+     * Order: COMPOSER_BINARY env → project composer.phar → `composer` on PATH.
+     */
+    protected function composerCommand(array $args): array
+    {
+        $php = (new \Symfony\Component\Process\PhpExecutableFinder())->find(false) ?: PHP_BINARY;
+
+        $override = trim((string) (getenv('COMPOSER_BINARY') ?: ''));
+        if ($override !== '' && is_file($override)) {
+            return str_ends_with($override, '.phar')
+                ? array_merge([$php, $override], $args)
+                : array_merge([$override], $args);
+        }
+
+        $phar = base_path('composer.phar');
+        if (is_file($phar)) {
+            return array_merge([$php, $phar], $args);
+        }
+
+        return array_merge(['composer'], $args);
+    }
+
+    /**
+     * Run a process and stream its combined output to the client live.
+     */
+    protected function streamProcess(array $command, string $cwd): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $response = new \Symfony\Component\HttpFoundation\StreamedResponse(function () use ($command, $cwd) {
+            @set_time_limit(0);
+            ignore_user_abort(true);
+            while (ob_get_level() > 0) {
+                @ob_end_flush();
+            }
+
+            $emit = function (string $s) {
+                echo $s;
+                @flush();
+            };
+
+            $emit('$ ' . implode(' ', $command) . "\n\n");
+
+            $env = [
+                'COMPOSER_HOME'           => storage_path('app/composer'),
+                'COMPOSER_NO_INTERACTION' => '1',
+                'COMPOSER_MEMORY_LIMIT'   => '-1',
+                'HOME'                    => base_path(),
+                'PATH'                    => getenv('PATH') ?: '',
+                'APPDATA'                 => getenv('APPDATA') ?: '',
+            ];
+            @mkdir($env['COMPOSER_HOME'], 0775, true);
+
+            try {
+                $process = new \Symfony\Component\Process\Process($command, $cwd, $env, null, 1800);
+                $process->run(function ($type, $buffer) use ($emit) {
+                    $emit($buffer);
+                });
+                $emit("\n[process exited with code " . $process->getExitCode() . "]\n");
+            } catch (\Throwable $e) {
+                $emit("\n[failed to start process: " . $e->getMessage() . "]\n");
+            }
+        });
+
+        $response->headers->set('Content-Type', 'text/plain; charset=utf-8');
+        $response->headers->set('Cache-Control', 'no-cache, no-store');
+        $response->headers->set('X-Accel-Buffering', 'no'); // disable nginx buffering
+        $response->headers->set('Connection', 'keep-alive');
+
+        return $response;
+    }
+
     // ====================== METRIC HELPERS ======================
 
     protected function cpuMetrics(): array
