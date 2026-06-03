@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Jobs\SendRegistrationEmails;
 use App\Models\Registration;
+use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -47,6 +48,9 @@ class RegistrationForm extends Component
 
     // UI state
     public bool $submitted = false;
+
+    // Signed certificate download URL shown on the success screen.
+    public string $certificateUrl = '';
 
     public array $districts = [
         'Araria', 'Arwal', 'Aurangabad', 'Banka', 'Begusarai', 'Bhagalpur', 'Bhojpur', 'Buxar', 'Darbhanga',
@@ -116,10 +120,18 @@ class RegistrationForm extends Component
         // Queue confirmation (user) + notification (admin) emails.
         SendRegistrationEmails::dispatch($registration);
 
+        // Signed, time-limited download link (24h) for the certificate.
+        $certificateUrl = URL::temporarySignedRoute(
+            'registration.certificate',
+            now()->addDay(),
+            $registration
+        );
+
         $this->reset();
         $this->state = 'Bihar';
         $this->country = 'India';
         $this->submitted = true;
+        $this->certificateUrl = $certificateUrl;
 
         $this->dispatch('registration-saved');
     }

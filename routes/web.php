@@ -12,6 +12,15 @@ Route::get('/', function () {
 
 Route::post('/register', [RegistrationController::class, 'store'])->name('register.submit');
 
+// Certificate PDF download (signed URL — prevents id enumeration of personal data).
+Route::get('/registration/{registration}/certificate', [RegistrationController::class, 'certificate'])
+    ->name('registration.certificate')
+    ->middleware('signed');
+
+// Certificate design preview (local only).
+Route::get('/certificate/preview', [RegistrationController::class, 'certificatePreview'])
+    ->name('certificate.preview');
+
 /*
 |--------------------------------------------------------------------------
 | Mail template previews (local only)

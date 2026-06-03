@@ -8,8 +8,18 @@
       </div>
       <h3 style="margin:0 0 8px;">Registration submitted!</h3>
       <p style="margin:0 0 24px;color:var(--ink-soft);">
-        Thanks for registering with the Goal Shot Ball Association of Bihar. We'll be in touch shortly.
+        Thanks for registering with the Goal Shot Ball Association of Bihar.
+        Your certificate has also been emailed to you. We'll be in touch shortly.
       </p>
+      @if ($certificateUrl)
+        <a href="{{ $certificateUrl }}" class="btn-form primary"
+          style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:14px;"
+          target="_blank" rel="noopener">
+          <i class="fas fa-file-arrow-down" aria-hidden="true"></i>
+          Download certificate (PDF)
+        </a>
+        <br>
+      @endif
       <button type="button" class="btn-form primary" wire:click="$set('submitted', false)">
         Register another player
       </button>

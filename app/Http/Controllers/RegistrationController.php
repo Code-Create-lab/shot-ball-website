@@ -3,10 +3,61 @@
 namespace App\Http\Controllers;
 
 use App\Models\Registration;
+use App\Services\CertificateGenerator;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class RegistrationController extends Controller
 {
+    /**
+     * Download a registration's certificate PDF.
+     * Route is protected by a signed URL so registration ids cannot be
+     * enumerated to harvest other applicants' personal data (Aadhaar etc).
+     */
+    public function certificate(Registration $registration, CertificateGenerator $generator): Response
+    {
+        $pdf = $generator->make($registration);
+
+        return $pdf->download($generator->filename($registration));
+    }
+
+    /**
+     * Render the certificate design in the browser for quick iteration.
+     * Local environment only. Uses the latest registration or a sample.
+     */
+    public function certificatePreview(Request $request, CertificateGenerator $generator): Response
+    {
+        abort_unless(app()->isLocal(), 404);
+
+        $registration = Registration::latest()->first() ?? new Registration([
+            'registration_type' => 'Women',
+            'event_type'        => 'Senior',
+            'first_name'        => 'Payal',
+            'last_name'         => 'Kumari',
+            'dob'               => '2009-09-13',
+            'father_name'       => 'Suraj',
+            'mother_name'       => 'Kumar Singh',
+            'address'           => 'Kamruddinpur, Ward No-5',
+            'village_city'      => 'Begusarai',
+            'state'             => 'Bihar',
+            'district'          => 'Begusarai',
+            'club1'             => 'SOS Begusarai',
+            'pincode'           => '851134',
+            'country'           => 'India',
+            'aadhaar'           => '404605501068',
+            'mobile'            => '9934120570',
+            'email'             => 'suhanigirl189@gmail.com',
+        ]);
+        $registration->id ??= 0;
+
+        $pdf = $generator->make($registration);
+
+        // ?download=1 forces a file download; default streams inline in the browser.
+        return $request->boolean('download')
+            ? $pdf->download($generator->filename($registration))
+            : $pdf->stream('certificate-preview.pdf');
+    }
+
     /**
      * Store a new player registration.
      */
