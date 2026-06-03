@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\Registrations\Tables;
 
+use App\Services\CertificateGenerator;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -90,9 +93,47 @@ class RegistrationsTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                Action::make('certificate')
+                    ->label('PDF')
+                    ->icon('heroicon-m-document-arrow-down')
+                    ->color('success')
+                    ->action(function ($record) {
+                        $generator = app(CertificateGenerator::class);
+                        $pdf = $generator->make($record);
+
+                        return response()->streamDownload(
+                            fn () => print ($pdf->output()),
+                            $generator->filename($record),
+                            ['Content-Type' => 'application/pdf'],
+                        );
+                    }),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
+                    BulkAction::make('certificates')
+                        ->label('Download PDFs')
+                        ->icon('heroicon-m-document-arrow-down')
+                        ->color('success')
+                        ->action(function ($records) {
+                            $generator = app(CertificateGenerator::class);
+
+                            $zipPath = tempnam(sys_get_temp_dir(), 'certs') . '.zip';
+                            $zip = new \ZipArchive();
+                            $zip->open($zipPath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+                            foreach ($records as $record) {
+                                $zip->addFromString(
+                                    $generator->filename($record),
+                                    $generator->make($record)->output(),
+                                );
+                            }
+                            $zip->close();
+
+                            return response()
+                                ->download($zipPath, 'certificates.zip')
+                                ->deleteFileAfterSend();
+                        })
+                        ->deselectRecordsAfterCompletion(),
                     DeleteBulkAction::make(),
                 ]),
             ]);

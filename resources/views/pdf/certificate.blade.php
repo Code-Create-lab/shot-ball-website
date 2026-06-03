@@ -62,9 +62,18 @@
 <head>
 <meta charset="utf-8">
 <style>
-    @page { margin: 0; }
+    /* A4 portrait @96dpi = 794 x 1123px. Margin via .page padding so the
+       red frame never touches the sheet edge (prevents right-border clip). */
+    @page { size: A4 portrait; margin: 0; }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* dompdf renders A4 as 595.28 x 841.89pt; at 96dpi that's 793.7 x 1122.5px.
+       dompdf ignores fixed height/overflow for pagination, so we DON'T force a
+       page-tall box (that overflowed onto page 2). Instead the frame auto-wraps
+       the content and a safe min-height keeps the border near the page bottom
+       while staying under the single-page break. */
+    html, body { width: 794px; }
 
     body {
         font-family: "DejaVu Sans", sans-serif;
@@ -72,23 +81,26 @@
         font-size: 12px;
     }
 
-    /* Page frame — double red border like the reference */
+    /* Page frame — double red border like the reference.
+       dompdf resolves child width against the page, not the parent's padding
+       box, so the frame gets an EXPLICIT width + margin:auto to sit inside the
+       sheet on all four sides (fixes the right border bleeding off-page). */
     .page {
         position: relative;
-        width: 100%;
-        min-height: 1100px;
-        padding: 18px;
+        width: 794px;
     }
     .frame-outer {
+        width: 760px;              /* 17px gutter each side of the 794px page */
+        margin: 16px auto;
         border: 2px solid #b91c1c;
         padding: 4px;
-        min-height: 1060px;
+        min-height: 1040px;        /* ~780pt: fills page, stays < 1122px break */
         position: relative;
     }
     .frame-inner {
         border: 2px solid #b91c1c;
-        padding: 22px 26px;
-        min-height: 1048px;
+        padding: 20px 24px;
+        min-height: 1028px;
         position: relative;
         z-index: 2;
     }
@@ -120,11 +132,11 @@
         padding: 10px 8px;
     }
     .title-box h1 {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: 800;
-        color: #c1121f;
-        letter-spacing: 1px;
-        line-height: 1.05;
+        color: #8a0c14;
+        letter-spacing: 0.5px;
+        line-height: 1.1;
     }
 
     .divider {
@@ -229,7 +241,7 @@
                     </td>
                     <td>
                         <div class="title-box">
-                            <h1>GOAL SHOT BALL ASSOCIATION</h1>
+                            <h1>GOAL SHOT BALL ASSOCIATION OF BIHAR</h1>
                         </div>
                     </td>
                 </tr>
