@@ -69,8 +69,20 @@ class RegistrationResource extends Resource
             Section::make('Documents')
                 ->columns(2)
                 ->schema([
-                    ImageEntry::make('photo_path')->label('Photograph')->disk('public')->height(180),
-                    ImageEntry::make('signature_path')->label('Signature')->disk('public')->height(180),
+                    ImageEntry::make('photo_path')
+                        ->label('Photograph')
+                        ->disk('public')
+                        ->extraImgAttributes([
+                            'style' => 'max-width:100%;max-height:200px;width:auto;height:auto;object-fit:contain;border-radius:8px;background:#fff;',
+                        ]),
+                    ImageEntry::make('signature_path')
+                        ->label('Signature')
+                        ->disk('public')
+                        ->extraImgAttributes([
+                            // Signatures are wide strips — cap width to the column so
+                            // they never overflow the section / view modal.
+                            'style' => 'max-width:100%;max-height:140px;width:auto;height:auto;object-fit:contain;border-radius:8px;background:#fff;padding:6px;',
+                        ]),
                 ]),
         ]);
     }
