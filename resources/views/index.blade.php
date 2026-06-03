@@ -119,6 +119,18 @@
         <div class="members-track" data-stagger data-members-track>
           <article class="member-card">
             <div class="member-img">
+              <img src="{{ asset('assets/img/members/navin_ GSBAB.jpeg') }}"
+                alt="Navin Kumar Singh, Chief Patron">
+            </div>
+            <div class="member-info">
+              <h3>Navin Kumar Singh</h3>
+              <span class="role">Chief Patron, GSBAB</span>
+            </div>
+          </article>
+
+          {{--
+          <article class="member-card">
+            <div class="member-img">
               <img src="{{ asset('assets/img/members/Sumit Kumar_Chairman GSBAB.jpeg') }}" alt="Sumit Kumar, Chairman">
             </div>
             <div class="member-info">
@@ -126,6 +138,7 @@
               <span class="role">Chairman, GSBAB</span>
             </div>
           </article>
+          --}}
 
           <article class="member-card">
             <div class="member-img">
@@ -166,6 +179,39 @@
             <div class="member-info">
               <h3>Gaurav Kumar</h3>
               <span class="role">Treasurer, GSBAB</span>
+            </div>
+          </article>
+
+          <article class="member-card">
+            <div class="member-img">
+              <img src="{{ asset('assets/img/members/Rakesh_ranjan_joint_secretary GSBAB.jpeg') }}"
+                alt="Rakesh Ranjan, Joint Secretary">
+            </div>
+            <div class="member-info">
+              <h3>Rakesh Ranjan</h3>
+              <span class="role">Joint Secretary, GSBAB</span>
+            </div>
+          </article>
+
+          <article class="member-card">
+            <div class="member-img">
+              <img src="{{ asset('assets/img/members/VIKKI KUMAR JOINT SECRETARY GSBAB.jpeg') }}"
+                alt="Vikki Kumar, Joint Secretary">
+            </div>
+            <div class="member-info">
+              <h3>Vikki Kumar</h3>
+              <span class="role">Joint Secretary, GSBAB</span>
+            </div>
+          </article>
+
+          <article class="member-card">
+            <div class="member-img">
+              <img src="{{ asset('assets/img/members/rituKumari.jpeg') }}"
+                alt="Ritu Kumari, Vice President">
+            </div>
+            <div class="member-info">
+              <h3>Ritu Kumari</h3>
+              <span class="role">Vice President, GSBAB</span>
             </div>
           </article>
         </div>
