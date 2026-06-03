@@ -54,7 +54,30 @@
     </tr>
   </table>
 
-  <p style="margin:24px 0 8px 0; font-family:Barlow, Arial, sans-serif; font-size:14px; line-height:22px; color:#78350F;">
-    Photo and signature are stored under <code style="color:#0F172A;">storage/app/public/registrations</code>.
-  </p>
+  @if ($registration->photo_path || $registration->signature_path)
+    <p style="margin:24px 0 10px 0; font-family:'Barlow Condensed', Arial, sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#92400E;">
+      Uploaded documents
+    </p>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        @if ($registration->photo_path)
+          <td width="50%" valign="top" style="padding:0 8px 0 0;">
+            <p style="margin:0 0 6px 0; font-family:Barlow, Arial, sans-serif; font-size:12px; color:#78350F;">Photograph</p>
+            <img src="{{ url('storage/' . $registration->photo_path) }}" alt="Photograph"
+              width="180"
+              style="display:block; width:100%; max-width:180px; height:auto; border:1px solid #FDE68A; border-radius:8px;">
+          </td>
+        @endif
+        @if ($registration->signature_path)
+          <td width="50%" valign="top" style="padding:0 0 0 8px;">
+            <p style="margin:0 0 6px 0; font-family:Barlow, Arial, sans-serif; font-size:12px; color:#78350F;">Signature</p>
+            <img src="{{ url('storage/' . $registration->signature_path) }}" alt="Signature"
+              width="220"
+              style="display:block; width:100%; max-width:220px; height:auto; border:1px solid #FDE68A; border-radius:8px; background-color:#FFFFFF; padding:6px;">
+          </td>
+        @endif
+      </tr>
+    </table>
+  @endif
 @endsection

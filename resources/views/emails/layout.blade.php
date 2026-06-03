@@ -85,8 +85,12 @@
                 &nbsp;&middot;&nbsp;
                 <a href="mailto:bihargoalshotball@gmail.com" style="color:#2563EB; text-decoration:none;">bihargoalshotball@gmail.com</a>
               </p>
-              <p style="margin:0; font-family:Barlow, Arial, sans-serif; font-size:12px; line-height:18px; color:#A16207;">
+              <p style="margin:0 0 4px 0; font-family:Barlow, Arial, sans-serif; font-size:12px; line-height:18px; color:#A16207;">
                 &copy; {{ date('Y') }} Goal Shot Ball Association of Bihar. All rights reserved.
+              </p>
+              <p style="margin:0; font-family:Barlow, Arial, sans-serif; font-size:11px; line-height:16px; color:#A16207;">
+                Designed &amp; developed by
+                <a href="https://www.instagram.com/10xcart" style="color:#D97706; text-decoration:none; font-weight:600;">10xCart</a>
               </p>
             </td>
           </tr>
