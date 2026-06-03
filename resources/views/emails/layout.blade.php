@@ -81,9 +81,9 @@
                 Kamruddinpur, Ward No-5, Begusarai (Bihar)
               </p>
               <p style="margin:0 0 14px 0; font-family:Barlow, Arial, sans-serif; font-size:13px; line-height:20px; color:#78350F;">
-                <a href="tel:+917979906275" style="color:#2563EB; text-decoration:none;">7979906275</a>
+                <a href="tel:+918083319186" style="color:#2563EB; text-decoration:none;">8083319186</a>
                 &nbsp;&middot;&nbsp;
-                <a href="mailto:veeru271291@gmail.com" style="color:#2563EB; text-decoration:none;">veeru271291@gmail.com</a>
+                <a href="mailto:bihargoalshotball@gmail.com" style="color:#2563EB; text-decoration:none;">bihargoalshotball@gmail.com</a>
               </p>
               <p style="margin:0; font-family:Barlow, Arial, sans-serif; font-size:12px; line-height:18px; color:#A16207;">
                 &copy; {{ date('Y') }} Goal Shot Ball Association of Bihar. All rights reserved.

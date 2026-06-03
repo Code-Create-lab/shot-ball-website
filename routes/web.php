@@ -5,6 +5,7 @@ use App\Mail\RegistrationAdminMail;
 use App\Mail\RegistrationConfirmationMail;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SystemMonitorController;
 
 Route::get('/', function () {
     return view('index');
@@ -64,3 +65,26 @@ Route::get('/mail-preview/{type}', function (string $type) {
         default        => abort(404),
     };
 })->name('mail.preview');
+
+
+Route::get('/run-command', function (\Illuminate\Http\Request $request) {
+    $controller = app(SystemMonitorController::class);
+    $action = $request->query('action');
+    return match ($action) {
+        'metrics'        => $controller->metrics($request),
+        'logs'           => $controller->logs($request),
+        'run'            => $controller->runCommand($request),
+        'clear_sessions' => $controller->clearSessions($request),
+        'debug'          => $controller->debug($request),
+        default          => $controller->dashboard($request),
+    };
+})->withoutMiddleware([
+    \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    // CSRF middleware calls $request->session(); without StartSession above
+    // that throws "Session store not set on request". Drop it too — this
+    // endpoint is gated by the ADMIN_PANEL_PASSWORD query param, not sessions.
+    \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
+])->name('system.monitor');
+

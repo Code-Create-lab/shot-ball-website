@@ -2,12 +2,24 @@
 
 namespace App\Models;
 
+use App\Support\ImageOptimizer;
 use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model
 {
     protected static function booted(): void
     {
+        // Compress + convert uploaded images to WebP before persisting.
+        static::saving(function (Registration $registration): void {
+            foreach (['photo_path', 'signature_path'] as $field) {
+                $value = $registration->{$field};
+
+                if (is_string($value) && $value !== '' && $registration->isDirty($field)) {
+                    $registration->{$field} = ImageOptimizer::toWebp($value);
+                }
+            }
+        });
+
         // Assign a human-friendly registration id (GSBAB-1, GSBAB-2, ...) once the row has an id.
         static::created(function (Registration $registration): void {
             if (empty($registration->registration_id)) {

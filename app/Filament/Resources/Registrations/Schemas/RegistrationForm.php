@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Registrations\Schemas;
 
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -56,9 +57,23 @@ class RegistrationForm
                     ->label('Email address')
                     ->email()
                     ->required(),
-                TextInput::make('photo_path')
+                FileUpload::make('photo_path')
+                    ->label('Photograph')
+                    ->image()
+                    ->disk('public')
+                    ->directory('registrations/photos')
+                    ->visibility('public')
+                    ->imageEditor()
+                    ->maxSize(2048)
                     ->required(),
-                TextInput::make('signature_path')
+                FileUpload::make('signature_path')
+                    ->label('Signature')
+                    ->image()
+                    ->disk('public')
+                    ->directory('registrations/signatures')
+                    ->visibility('public')
+                    ->imageEditor()
+                    ->maxSize(2048)
                     ->required(),
             ]);
     }
