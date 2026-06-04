@@ -49,6 +49,7 @@ class Registration extends Model
         'aadhaar',
         'mobile',
         'email',
+        'email_status',
         'photo_path',
         'signature_path',
     ];

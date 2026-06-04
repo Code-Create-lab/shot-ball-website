@@ -33,11 +33,22 @@ class SendRegistrationEmails implements ShouldQueue
         Mail::to($this->registration->email)
             ->send(new RegistrationConfirmationMail($this->registration));
 
+        // Mark the registrant mail as delivered to the mailer.
+        $this->registration->update(['email_status' => 'Sent']);
+
         // Notification to the association admin.
         $admin = config('mail.admin_address');
         if ($admin) {
             Mail::to($admin)
                 ->send(new RegistrationAdminMail($this->registration));
         }
+    }
+
+    /**
+     * Record a failure after all retries are exhausted.
+     */
+    public function failed(\Throwable $e): void
+    {
+        $this->registration->update(['email_status' => 'Failed']);
     }
 }

@@ -64,6 +64,16 @@ class RegistrationsTable
                     ->label('Email')
                     ->searchable()
                     ->toggleable(),
+                TextColumn::make('email_status')
+                    ->label('Mail')
+                    ->badge()
+                    ->color(fn (?string $state) => match ($state) {
+                        'Sent'   => 'success',
+                        'Failed' => 'danger',
+                        default  => 'gray',
+                    })
+                    ->default('Pending')
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Registered')
                     ->dateTime('d M Y, H:i')
@@ -92,6 +102,13 @@ class RegistrationsTable
                         ->orderBy('district')
                         ->pluck('district', 'district')
                         ->all()),
+                SelectFilter::make('email_status')
+                    ->label('Mail Status')
+                    ->options([
+                        'Sent'    => 'Sent',
+                        'Failed'  => 'Failed',
+                        'Pending' => 'Pending',
+                    ]),
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -130,7 +147,10 @@ class RegistrationsTable
 
                         try {
                             Mail::to($record->email)->send(new RegistrationConfirmationMail($record));
+                            $record->update(['email_status' => 'Sent']);
                         } catch (\Throwable $e) {
+                            $record->update(['email_status' => 'Failed']);
+
                             Notification::make()
                                 ->title('Email failed to send')
                                 ->body($e->getMessage())
@@ -192,8 +212,10 @@ class RegistrationsTable
 
                                 try {
                                     Mail::to($record->email)->send(new RegistrationConfirmationMail($record));
+                                    $record->update(['email_status' => 'Sent']);
                                     $sent++;
                                 } catch (\Throwable $e) {
+                                    $record->update(['email_status' => 'Failed']);
                                     $failed++;
                                 }
                             }

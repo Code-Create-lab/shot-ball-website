@@ -81,7 +81,7 @@ class RegistrationForm extends Component
             'country'           => 'required|string|max:255',
             'aadhaar'           => 'required|digits:12',
             'mobile'            => 'required|digits:10',
-            'email'             => 'required|email|max:255',
+            'email'             => 'required|email|max:255|unique:registrations,email',
             'photo'             => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'signature'         => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'terms'             => 'accepted',
@@ -92,6 +92,7 @@ class RegistrationForm extends Component
     {
         return [
             'village_city.regex' => 'The village / city may only contain letters and spaces.',
+            'email.unique'       => 'You are already registered',
             'terms.accepted'     => 'You must agree to the terms and conditions.',
             'photo.max'          => 'The photograph may not be larger than 2MB.',
             'signature.max'      => 'The signature may not be larger than 2MB.',
