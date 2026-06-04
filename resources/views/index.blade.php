@@ -266,7 +266,7 @@
             </div>
           </div>
           <div class="players-grid" data-stagger>
-            @foreach (['slider2','slider33', 'slider34' ,'slider16'] as $img)
+            @foreach (['slider2','slider34', 'slider35' ,'slider16'] as $img)
             <div class="player-card">
               <a class="player-zoom" href="{{ asset('assets/img/sliders/' . $img . '.jpeg') }}" data-player-zoom
                 aria-label="View player portrait">
