@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Registrations\Tables;
 
+use App\Mail\RegistrationConfirmationMail;
 use App\Services\CertificateGenerator;
 use Filament\Actions\Action;
 use Filament\Actions\BulkAction;
@@ -9,10 +10,12 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Mail;
 
 class RegistrationsTable
 {
@@ -107,6 +110,41 @@ class RegistrationsTable
                             ['Content-Type' => 'application/pdf'],
                         );
                     }),
+                Action::make('sendThankYou')
+                    ->label('Email')
+                    ->icon('heroicon-m-envelope')
+                    ->color('primary')
+                    ->requiresConfirmation()
+                    ->modalHeading('Send thank-you email')
+                    ->modalDescription(fn ($record) => "Send registration confirmation with PDF certificate to {$record->email}?")
+                    ->disabled(fn ($record) => blank($record->email))
+                    ->action(function ($record) {
+                        if (blank($record->email)) {
+                            Notification::make()
+                                ->title('No email address on this registration')
+                                ->warning()
+                                ->send();
+
+                            return;
+                        }
+
+                        try {
+                            Mail::to($record->email)->send(new RegistrationConfirmationMail($record));
+                        } catch (\Throwable $e) {
+                            Notification::make()
+                                ->title('Email failed to send')
+                                ->body($e->getMessage())
+                                ->danger()
+                                ->send();
+
+                            return;
+                        }
+
+                        Notification::make()
+                            ->title("Thank-you email sent to {$record->email}")
+                            ->success()
+                            ->send();
+                    }),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
@@ -132,6 +170,39 @@ class RegistrationsTable
                             return response()
                                 ->download($zipPath, 'certificates.zip')
                                 ->deleteFileAfterSend();
+                        })
+                        ->deselectRecordsAfterCompletion(),
+                    BulkAction::make('sendThankYouBulk')
+                        ->label('Send Thank-You Emails')
+                        ->icon('heroicon-m-envelope')
+                        ->color('primary')
+                        ->requiresConfirmation()
+                        ->modalHeading('Send thank-you emails')
+                        ->modalDescription('Send registration confirmation with PDF certificate to all selected registrations that have an email address.')
+                        ->action(function ($records) {
+                            $sent = 0;
+                            $skipped = 0;
+                            $failed = 0;
+
+                            foreach ($records as $record) {
+                                if (blank($record->email)) {
+                                    $skipped++;
+                                    continue;
+                                }
+
+                                try {
+                                    Mail::to($record->email)->send(new RegistrationConfirmationMail($record));
+                                    $sent++;
+                                } catch (\Throwable $e) {
+                                    $failed++;
+                                }
+                            }
+
+                            Notification::make()
+                                ->title("Sent {$sent} email(s)")
+                                ->body("Skipped (no email): {$skipped}. Failed: {$failed}.")
+                                ->success()
+                                ->send();
                         })
                         ->deselectRecordsAfterCompletion(),
                     DeleteBulkAction::make(),

@@ -2,8 +2,43 @@
     use Illuminate\Support\Facades\Storage;
 
     /**
-     * Resolve a stored upload to an absolute filesystem path for dompdf.
+     * Embed an image file as a base64 data URI. dompdf restricts local-file
+     * access via chroot, so images stored outside its root (e.g. storage/app
+     * /public) are otherwise dropped silently. Inlining sidesteps chroot, the
+     * isRemoteEnabled flag, and Windows backslash-path quirks entirely.
      * Returns null when the file is missing (e.g. sample/preview records).
+     */
+    $embedImage = function (?string $absPath): ?string {
+        if (! $absPath || ! is_file($absPath)) {
+            return null;
+        }
+        $data = @file_get_contents($absPath);
+        if ($data === false) {
+            return null;
+        }
+        $mime = 'image/png';
+        if (function_exists('finfo_open') && ($f = finfo_open(FILEINFO_MIME_TYPE))) {
+            $detected = finfo_buffer($f, $data);
+            finfo_close($f);
+            if (is_string($detected) && str_starts_with($detected, 'image/')) {
+                $mime = $detected;
+            }
+        } else {
+            $ext = strtolower(pathinfo($absPath, PATHINFO_EXTENSION));
+            $mime = match ($ext) {
+                'jpg', 'jpeg' => 'image/jpeg',
+                'gif'         => 'image/gif',
+                'webp'        => 'image/webp',
+                'svg'         => 'image/svg+xml',
+                default       => 'image/png',
+            };
+        }
+
+        return 'data:' . $mime . ';base64,' . base64_encode($data);
+    };
+
+    /**
+     * Resolve a stored public-disk upload to its absolute filesystem path.
      */
     $resolveUpload = function (?string $path): ?string {
         if (! $path) {
@@ -14,9 +49,9 @@
     };
 
     $logoPath   = public_path('assets/img/logo.png');
-    $logo       = is_file($logoPath) ? $logoPath : null;
-    $photo      = $resolveUpload($registration->photo_path ?? null);
-    $signature  = $resolveUpload($registration->signature_path ?? null);
+    $logo       = $embedImage(is_file($logoPath) ? $logoPath : null);
+    $photo      = $embedImage($resolveUpload($registration->photo_path ?? null));
+    $signature  = $embedImage($resolveUpload($registration->signature_path ?? null));
 
     $fullName = trim(implode(' ', array_filter([
         $registration->first_name ?? null,
