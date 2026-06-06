@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Track public site visitors for the admin dashboard stats.
+        $middleware->web(append: [
+            \App\Http\Middleware\TrackVisitor::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
