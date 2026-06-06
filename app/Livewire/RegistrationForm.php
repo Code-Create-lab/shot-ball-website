@@ -75,7 +75,7 @@ class RegistrationForm extends Component
             'village_city'      => 'required|regex:/^[A-Za-z\s]+$/|max:255',
             'state'             => 'required|string|max:255',
             'district'          => 'required|in:' . implode(',', $this->districts),
-            'club1'             => 'required|string|max:255',
+            'club1'             => 'nullable|string|max:255',
             'club2'             => 'nullable|string|max:255',
             'pincode'           => 'required|digits:6',
             'country'           => 'required|string|max:255',

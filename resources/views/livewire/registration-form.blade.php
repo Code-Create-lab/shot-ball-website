@@ -140,7 +140,7 @@
           @error('district') <span class="field-error">{{ $message }}</span> @enderror
         </div>
         <div class="form-field">
-          <label>Club 1 <span class="req">*</span></label>
+          <label>Club 1 {{-- <span class="req">*</span>  --}} </label>
           <input type="text" wire:model.blur="club1">
           @error('club1') <span class="field-error">{{ $message }}</span> @enderror
         </div>
