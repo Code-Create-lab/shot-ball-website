@@ -109,7 +109,12 @@ class RegistrationForm extends Component
 
     public function submit()
     {
-        $validated = $this->validate();
+        try {
+            $validated = $this->validate();
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $this->dispatch('validation-failed');
+            throw $e;
+        }
 
         $validated['photo_path']     = $this->photo->store('registrations/photos', 'public');
         $validated['signature_path'] = $this->signature->store('registrations/signatures', 'public');

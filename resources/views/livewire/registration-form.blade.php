@@ -1,6 +1,14 @@
 <form class="gsb-form-wrap" wire:submit="submit" novalidate
   x-data
-  x-on:registration-saved.window="$nextTick(() => document.getElementById('registration-success')?.scrollIntoView({ behavior: 'smooth', block: 'center' }))">
+  x-on:registration-saved.window="$nextTick(() => document.getElementById('registration-success')?.scrollIntoView({ behavior: 'smooth', block: 'center' }))"
+  x-on:validation-failed.window="$nextTick(() => {
+    const err = $el.querySelector('.field-error');
+    if (!err) return;
+    const field = err.closest('.form-field, .form-agree') || err;
+    const input = field.querySelector('input, select, textarea');
+    field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    input?.focus({ preventScroll: true });
+  })">
   @if ($submitted)
     <div id="registration-success" class="form-saved" role="status" aria-live="polite"
       style="text-align:center;padding:48px 24px;">
