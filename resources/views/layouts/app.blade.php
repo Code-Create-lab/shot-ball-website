@@ -12,6 +12,7 @@
     <meta name="theme-color" content="#F59E0B">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Goal Shot Ball Association of Bihar">
+    <meta name="author" content="10xCart">
 
     {{-- Canonical --}}
     <link rel="canonical" href="@yield('canonical', url()->current())">
