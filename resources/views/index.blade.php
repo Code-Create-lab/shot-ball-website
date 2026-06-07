@@ -323,7 +323,7 @@
           @livewire('registration-form')
 
           <p class="form-foot">
-            Need help? <em>Call</em><a href="tel:+918083319186">8083319186</a>,
+            Need help? Call <a href="tel:+918083319186">8083319186</a>.
           </p>
         </div>
       </div>
