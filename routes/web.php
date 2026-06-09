@@ -4,13 +4,15 @@ use App\Http\Controllers\RegistrationController;
 use App\Mail\RegistrationAdminMail;
 use App\Mail\RegistrationConfirmationMail;
 use App\Models\Member;
+use App\Models\PressClipping;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SystemMonitorController;
 
 Route::get('/', function () {
     return view('index', [
-        'members' => Member::visible()->get(),
+        'members'        => Member::visible()->get(),
+        'pressClippings' => PressClipping::visible()->get(),
     ]);
 })->name('home');
 

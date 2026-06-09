@@ -392,6 +392,15 @@
       </div>
 
       <div class="press-grid" data-stagger>
+        @forelse (($pressClippings ?? collect()) as $clip)
+        <a class="press-clip" href="{{ asset('storage/' . $clip->image_path) }}" target="_blank" rel="noopener"
+          aria-label="{{ $clip->caption ?: 'Newspaper clipping' }} — open full image">
+          <img src="{{ asset('storage/' . $clip->image_path) }}"
+            alt="{{ $clip->caption ?: 'Goal Shot Ball newspaper clipping' }}" loading="lazy">
+          <span class="press-zoom"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+        </a>
+        @empty
+        {{-- No clippings in DB yet — show the original static gallery as fallback. --}}
         @for ($n = 1; $n <= 16; $n++)
         <a class="press-clip" href="{{ asset('assets/img/news/news' . $n . '.jpeg') }}" target="_blank" rel="noopener"
           aria-label="Newspaper clipping {{ $n }} — open full image">
@@ -400,6 +409,7 @@
           <span class="press-zoom"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i></span>
         </a>
         @endfor
+        @endforelse
       </div>
 
       <div class="press-more-wrap">
