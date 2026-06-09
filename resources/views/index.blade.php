@@ -117,7 +117,7 @@
         </button>
 
         <div class="members-track" data-stagger data-members-track>
-          <article class="member-card">
+          {{-- <article class="member-card">
             <div class="member-img">
               <img src="{{ asset('assets/img/members/navin_ GSBAB.jpeg') }}"
                 alt="Navin Kumar Singh, Chief Patron">
@@ -126,7 +126,7 @@
               <h3>Navin Kumar Singh</h3>
               <span class="role">Chief Patron, GSBAB</span>
             </div>
-          </article>
+          </article> --}}
 
           {{--
           <article class="member-card">
