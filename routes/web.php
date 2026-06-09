@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\Player;
 use App\Models\PressClipping;
 use App\Models\Registration;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SystemMonitorController;
 
@@ -18,6 +19,7 @@ Route::get('/', function () {
         'pressClippings'       => PressClipping::visible()->get(),
         'nationalPlayers'      => $players->get('national', collect()),
         'internationalPlayers' => $players->get('international', collect()),
+        'testimonials'         => Testimonial::visible()->get(),
     ]);
 })->name('home');
 

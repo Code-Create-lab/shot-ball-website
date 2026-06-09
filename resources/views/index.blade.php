@@ -382,16 +382,31 @@
       </div>
 
       <div class="testi-carousel owl-carousel owl-theme" data-testi-carousel>
+        @forelse (($testimonials ?? collect()) as $testimonial)
+        <article class="testi-card">
+          <span class="quote-mark">&ldquo;</span>
+          <div class="stars">
+            @for ($s = 0; $s < $testimonial->rating; $s++)<i class="fa-solid fa-star"></i>@endfor
+          </div>
+          <p>{{ $testimonial->quote }}</p>
+          <div class="testi-author">
+            <span class="testi-avatar" aria-hidden="true">{{ $testimonial->initial }}</span>
+            <div>
+              <h5>{{ $testimonial->name }}</h5>
+            </div>
+          </div>
+        </article>
+        @empty
+        {{-- No testimonials in DB yet — show the original static set as fallback. --}}
         @php
-          $testimonials = [
+          $staticTestimonials = [
             ['A', 'Amit Verma', 'The game has attracted many participants due to its unique concept, exciting gameplay, and team spirit. Students are highly motivated and eager to improve their skills, making the future of the sport very promising.'],
             ['B', 'Bhavya Kumari', 'Their energy, commitment, and love for the game demonstrate that Goal Shot Ball is rapidly gaining popularity and recognition.'],
             ['S', 'Saksham Raj', 'Goal Shot Ball is a very exciting and enjoyable game. We really love playing it because it improves our fitness, teamwork, and concentration. The game is easy to learn, full of action, and keeps us motivated to participate every day. We would like more opportunities to play and compete in Goal Shot Ball tournaments.'],
             ['R', 'Roshani Kumari', 'Goal Shot Ball is one of the most interesting sports we have played. It is fun, challenging, and helps us develop confidence and sportsmanship. Every match is exciting, and we look forward to playing it with our friends. We believe this game has a bright future and should be introduced to more students across the country.'],
           ];
         @endphp
-
-        @foreach ($testimonials as [$avatar, $name, $quote])
+        @foreach ($staticTestimonials as [$avatar, $name, $quote])
         <article class="testi-card">
           <span class="quote-mark">&ldquo;</span>
           <div class="stars">
@@ -406,6 +421,7 @@
           </div>
         </article>
         @endforeach
+        @endforelse
       </div>
     </div>
   </section>

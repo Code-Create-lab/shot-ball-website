@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             MemberSeeder::class,
             PressClippingSeeder::class,
             PlayerSeeder::class,
+            TestimonialSeeder::class,
         ]);
     }
 }
