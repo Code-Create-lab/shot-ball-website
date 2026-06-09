@@ -4,15 +4,20 @@ use App\Http\Controllers\RegistrationController;
 use App\Mail\RegistrationAdminMail;
 use App\Mail\RegistrationConfirmationMail;
 use App\Models\Member;
+use App\Models\Player;
 use App\Models\PressClipping;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SystemMonitorController;
 
 Route::get('/', function () {
+    $players = Player::visible()->get()->groupBy('category');
+
     return view('index', [
-        'members'        => Member::visible()->get(),
-        'pressClippings' => PressClipping::visible()->get(),
+        'members'              => Member::visible()->get(),
+        'pressClippings'       => PressClipping::visible()->get(),
+        'nationalPlayers'      => $players->get('national', collect()),
+        'internationalPlayers' => $players->get('international', collect()),
     ]);
 })->name('home');
 

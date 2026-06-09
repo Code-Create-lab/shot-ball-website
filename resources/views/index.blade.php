@@ -256,6 +256,19 @@
             </div>
           </div>
           <div class="players-grid" data-stagger>
+            @forelse (($nationalPlayers ?? collect()) as $player)
+            <div class="player-card">
+              <a class="player-zoom" href="{{ asset('storage/' . $player->image_path) }}" data-player-zoom
+                aria-label="{{ $player->name ? 'View ' . $player->name : 'View player portrait' }}">
+                <img src="{{ asset('storage/' . $player->image_path) }}"
+                  alt="{{ $player->name ?: 'Player portrait' }}" loading="lazy">
+                <span class="player-zoom-icon"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </a>
+              <div class="player-meta">
+                <span class="player-tag">National</span>
+              </div>
+            </div>
+            @empty
             @foreach (['slider32', 'slider33'] as $img)
             <div class="player-card">
               <a class="player-zoom" href="{{ asset('assets/img/sliders/' . $img . '.jpeg') }}" data-player-zoom
@@ -268,6 +281,7 @@
               </div>
             </div>
             @endforeach
+            @endforelse
           </div>
         </div>
 
@@ -280,6 +294,19 @@
             </div>
           </div>
           <div class="players-grid" data-stagger>
+            @forelse (($internationalPlayers ?? collect()) as $player)
+            <div class="player-card">
+              <a class="player-zoom" href="{{ asset('storage/' . $player->image_path) }}" data-player-zoom
+                aria-label="{{ $player->name ? 'View ' . $player->name : 'View player portrait' }}">
+                <img src="{{ asset('storage/' . $player->image_path) }}"
+                  alt="{{ $player->name ?: 'Player portrait' }}" loading="lazy">
+                <span class="player-zoom-icon"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </a>
+              <div class="player-meta">
+                <span class="player-tag intl">International</span>
+              </div>
+            </div>
+            @empty
             @foreach (['slider2','slider34', 'slider35' ,'slider16'] as $img)
             <div class="player-card">
               <a class="player-zoom" href="{{ asset('assets/img/sliders/' . $img . '.jpeg') }}" data-player-zoom
@@ -292,6 +319,7 @@
               </div>
             </div>
             @endforeach
+            @endforelse
           </div>
         </div>
       </div>
