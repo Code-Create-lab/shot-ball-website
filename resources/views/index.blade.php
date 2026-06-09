@@ -117,6 +117,19 @@
         </button>
 
         <div class="members-track" data-stagger data-members-track>
+          @forelse (($members ?? collect()) as $member)
+          <article class="member-card">
+            <div class="member-img">
+              <img src="{{ asset('storage/' . $member->image_path) }}"
+                alt="{{ $member->name }}, {{ strip_tags($member->role) }}">
+            </div>
+            <div class="member-info">
+              <h3>{{ $member->name }}</h3>
+              <span class="role">{!! nl2br(e($member->role)) !!}</span>
+            </div>
+          </article>
+          @empty
+          {{-- No members in DB yet — show the original static roster as fallback. --}}
           {{-- <article class="member-card">
             <div class="member-img">
               <img src="{{ asset('assets/img/members/navin_ GSBAB.jpeg') }}"
@@ -214,6 +227,7 @@
               <span class="role">Vice President, GSBAB</span>
             </div>
           </article>
+          @endforelse
         </div>
 
         <button class="members-arrow next" type="button" data-members-next aria-label="Next members">

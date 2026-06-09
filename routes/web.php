@@ -3,12 +3,15 @@
 use App\Http\Controllers\RegistrationController;
 use App\Mail\RegistrationAdminMail;
 use App\Mail\RegistrationConfirmationMail;
+use App\Models\Member;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SystemMonitorController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', [
+        'members' => Member::visible()->get(),
+    ]);
 })->name('home');
 
 Route::post('/register', [RegistrationController::class, 'store'])->name('register.submit');
