@@ -90,7 +90,9 @@
               </p>
               <p style="margin:0; font-family:Barlow, Arial, sans-serif; font-size:11px; line-height:16px; color:#A16207;">
                 Designed &amp; developed by
-                <a href="https://www.instagram.com/10xcart" style="color:#D97706; text-decoration:none; font-weight:600;">10xCart</a>
+                <a href="https://10xcart.snehal.info/" style="color:#D97706; text-decoration:none; font-weight:600;">10xCart</a>
+                &nbsp;&middot;&nbsp;
+                <a href="https://www.instagram.com/10xcart" style="color:#D97706; text-decoration:none; font-weight:600;">Instagram</a>
               </p>
             </td>
           </tr>

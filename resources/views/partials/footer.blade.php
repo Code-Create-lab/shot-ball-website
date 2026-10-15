@@ -78,8 +78,11 @@
         </p>
         <p class="footer-credit" style="margin: 0;">
           Designed &amp; Developed by
-          <a href="https://www.instagram.com/10xcart" target="_blank" rel="noopener noreferrer" class="credit-link">
+          <a href="https://10xcart.snehal.info/" target="_blank" rel="noopener noreferrer" class="credit-link">
             <span class="credit-name">10xCart</span>
+            <i class="fas fa-globe"></i>
+          </a>
+          <a href="https://www.instagram.com/10xcart" target="_blank" rel="noopener noreferrer" class="credit-link" aria-label="10xCart on Instagram">
             <i class="fab fa-instagram"></i>
           </a>
         </p>

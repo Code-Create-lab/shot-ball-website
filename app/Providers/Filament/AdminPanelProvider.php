@@ -75,8 +75,11 @@ class AdminPanelProvider extends PanelProvider
                 fn (): HtmlString => new HtmlString(<<<'HTML'
                     <div style="text-align:center;padding:16px 0 8px;font-size:.8rem;color:rgb(100 116 139);">
                         Designed &amp; developed by
-                        <a href="https://www.instagram.com/10xcart" target="_blank" rel="noopener"
+                        <a href="https://10xcart.snehal.info/" target="_blank" rel="noopener"
                            style="font-weight:600;color:rgb(217 119 6);text-decoration:none;">10xCart</a>
+                        &middot;
+                        <a href="https://www.instagram.com/10xcart" target="_blank" rel="noopener"
+                           style="font-weight:600;color:rgb(217 119 6);text-decoration:none;">Instagram</a>
                     </div>
                     HTML),
             )
